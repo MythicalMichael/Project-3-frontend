@@ -1,0 +1,12 @@
+
+  <ul style="list-style: none">
+    <div *ngIf="flats">
+        <li *ngFor="let cristian of flats">
+            {{cristian.flatname}}
+            <a [routerLink]="['/flat',cristian._id]"> ID </a>
+        </li>
+    </div>
+  </ul>
+
+<!-- <a [routerLink]="['/flat',flat.id]">More Details</a> -->
+ 
