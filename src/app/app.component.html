@@ -1,4 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-{{title}}
-<router-outlet></router-outlet>
+<header class="site-header">
 
+  <h1 class="site-title">
+    <a [routerLink]="['/flat']">Flat listing</a>
+  </h1>
+
+  <div [ngClass]="{'is-user': user, 'is-anon': anon}">
+    <div *ngIf="!loading">
+      <span class="username text">Loading...</span>
+    </div>
+    <div *ngIf="!loading && !user">
+      <a (click)="profile()">{{user.username}}</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+    <div *ngIf="!loading && anon">
+      <a (click)="login()">Login</a>
+      <a (click)="signup()">Signup</a>
+    </div>
+  </div>
+</header>
+xxx
+<router-outlet></router-outlet>
+xxx
+<footer class="site-footer">
+  <p>copyright bcnweb0817</p>
+</footer>

@@ -5,14 +5,13 @@ import { User } from "../../models/user.model";
 import { AuthService } from "../../services/auth.service";
 
 @Component({
-  selector: "app-signup",
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.css"]
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
-export class SignupComponent {
+export class LoginComponent {
   user = new User({
     username: "",
-    email: "",
     password: ""
   });
 
@@ -20,12 +19,12 @@ export class SignupComponent {
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  signup() {
+  login() {
     this.error = null;
     this.auth
-      .signup(this.user)
+      .login(this.user)
       .subscribe(
-        () => this.router.navigate(["/flat"]),
+        () => this.router.navigate(["/tasks"]),
         err => (this.error = err)
       );
   }

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { Injectable } from "@angular/core";
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/map";
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = "http://localhost:3000";
 
 @Injectable()
 export class UsersService {
@@ -13,7 +13,7 @@ export class UsersService {
   // }
   getOneUser(userid): Observable<any> {
     return this.http
-      .get(baseUrl + '/user/' + userid)
+      .get(baseUrl + "/user/" + userid)
       .map((res: Response) => res.json());
   }
 

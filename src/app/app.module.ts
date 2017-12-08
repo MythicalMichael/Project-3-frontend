@@ -3,22 +3,37 @@ import { NgModule } from "@angular/core";
 import { HttpModule } from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-
-import { AppComponent } from "./app.component";
-import { FlatItemComponent } from "./components/flat-item/flat-item.component";
-import { PageFlatComponent } from "./pages/page-flat/page-flat.component";
-import { PageProfileEditComponent } from "./pages/page-profile-edit/page-profile-edit.component";
-import { PageAddFlatComponent } from "./pages/page-add-flat/page-add-flat.component";
-import { PageProfileComponent } from "./pages/page-profile/page-profile.component";
-import { PageAuthComponent } from "./pages/page-auth/page-auth.component";
-import { PageFlatIdComponent } from "./pages/page-flat-id/page-flat-id.component";
-
-import { FlatsService } from "./services/flats.service";
-import { SignupComponent } from "./auth/signup/signup.component";
-import { PageUserIdComponent } from "./pages/page-user-id/page-user-id.component";
-import { UsersService } from "./services/users.service";
-// file upload in add flat
+// Animations ?
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+// Fileupload
 import { FileUploadModule } from "ng2-file-upload";
+// APP
+import { AppComponent } from "./app.component";
+// Auth
+import { RequireAuthGuard } from "./guards/require-auth.guard";
+import { RequireAnonGuard } from "./guards/require-anon.guard";
+
+import { PageAuthComponent } from "./pages/page-auth/page-auth.component";
+
+import { SignupComponent } from "./auth/signup/signup.component";
+import { LoginComponent } from "./auth/login/login.component";
+
+import { PageLoginComponent } from "./pages/page-login/page-login.component";
+import { PageSignupComponent } from "./pages/page-signup/page-signup.component";
+// Flat
+import { FlatItemComponent } from "./components/flat-item/flat-item.component";
+
+import { PageFlatComponent } from "./pages/page-flat/page-flat.component";
+import { PageAddFlatComponent } from "./pages/page-add-flat/page-add-flat.component";
+import { PageFlatIdComponent } from "./pages/page-flat-id/page-flat-id.component";
+// User
+import { PageUserIdComponent } from "./pages/page-user-id/page-user-id.component";
+import { PageProfileEditComponent } from "./pages/page-profile-edit/page-profile-edit.component";
+import { PageProfileComponent } from "./pages/page-profile/page-profile.component";
+// Services
+import { AuthService } from "./services/auth.service";
+import { FlatsService } from "./services/flats.service";
+import { UsersService } from "./services/users.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "flat", pathMatch: "full" },
@@ -27,8 +42,19 @@ const routes: Routes = [
   { path: "add-flat", component: PageAddFlatComponent },
   { path: "edit-profile", component: PageProfileEditComponent },
   { path: "profile", component: PageProfileComponent },
+  {
+    path: "auth/login",
+    canActivate: [RequireAnonGuard],
+    component: PageLoginComponent
+  },
+  {
+    path: "auth/signup",
+    canActivate: [RequireAnonGuard],
+    component: PageSignupComponent
+  },
   { path: "user/:id", component: PageUserIdComponent }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,16 +66,26 @@ const routes: Routes = [
     PageAuthComponent,
     PageFlatIdComponent,
     SignupComponent,
-    PageUserIdComponent
+    PageUserIdComponent,
+    LoginComponent,
+    PageLoginComponent,
+    PageSignupComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     FileUploadModule
   ],
-  providers: [FlatsService, UsersService],
+  providers: [
+    FlatsService,
+    UsersService,
+    AuthService,
+    RequireAuthGuard,
+    RequireAnonGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
