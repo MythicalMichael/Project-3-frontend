@@ -11,14 +11,17 @@ import { FlatsService } from '../../services/flats.service';
 export class PageFlatIdComponent implements OnInit {
   flat: object;
 
-  constructor(private activatedRoute: ActivatedRoute, private flatsService: FlatsService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private flatsService: FlatsService
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => {
-      this.flatsService.getOneFlat(params.id).subscribe(data => this.flat = data);
+    this.activatedRoute.params.subscribe(params => {
+      this.flatsService
+        .getOneFlat(params.id)
+        .subscribe(data => (this.flat = data));
       console.log(params.id);
     });
-
   }
-
 }

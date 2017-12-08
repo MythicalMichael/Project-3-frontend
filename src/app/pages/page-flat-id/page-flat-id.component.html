@@ -1,4 +1,8 @@
-<p>
-  page-flat-id works!
-</p>
-{{flat | json}}
+<div *ngIf="!flat">
+  <img src="https://media.giphy.com/media/A5pcWMMIEO95S/giphy.gif">
+</div>
+
+
+<div *ngIf="flat">
+  {{flat.flatname}}
+</div>

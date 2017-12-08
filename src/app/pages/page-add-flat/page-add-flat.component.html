@@ -1,3 +1,79 @@
-<p>
-  page-add-flat works!
-</p>
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && myFlatname.errors}">
+    <label>Flatname</label>
+    <input type="text" name="flatname" [(ngModel)]="flat.flatname" #myFlatname="ngModel" required minlength="4" [disabled]="processing"
+    />
+    <div *ngIf="feedbackEnabled && myFlatname.errors">
+      <p *ngIf="myFlatname.errors.required" class="validation">flatname required</p>
+      <p *ngIf="myFlatname.errors.minlength" class="validation">flatname is too short</p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && myRooms.errors}">
+    <label>Rooms</label>
+    <input type="number" name="rooms" [(ngModel)]="flat.rooms" #myRooms="ngModel" [disabled]="processing" min="0" max="99" required/>
+    <div *ngIf="feedbackEnabled && myRooms.errors">
+      <p *ngIf="myRooms.errors.required" class="validation">give me the amount of rooms motherfucker</p>
+    </div>
+
+  </div>
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && myPrice.errors}">
+    <label>Price in RUB</label>
+    <input type="number" name="price" [(ngModel)]="flat.price" #myPrice="ngModel" [disabled]="processing" min="0" required/>
+
+    <div *ngIf="feedbackEnabled && myPrice.errors">
+      <p *ngIf="myPrice.errors.required" class="validation">HOW MUCH MONEEEEEEZ</p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled}">
+    <label>Upload a picture of your appartment</label>
+    <input type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader" required/>
+    <!-- <div *ngIf="feedbackEnabled">
+      <p *ngIf="mymainPicture.errors.required" class="validation">please upload an image of your appartment</p>
+    </div> -->
+  </div>
+
+  <div class="field submit">
+    <button type="submit" [disabled]="processing">Add your Flat</button>
+    <div *ngIf="feedbackEnabled && myForm.invalid">
+      <p class="validation">there are errors in the form, please review the fields</p>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+<!-- <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && myUsername.errors}">
+    <label>Username</label>
+    <input type="text" name="username" [(ngModel)]="username" #myUsername="ngModel" required minlength="6" [disabled]="processing"
+    />
+    <div *ngIf="feedbackEnabled && myUsername.errors">
+      <p *ngIf="myUsername.errors.required" class="validation">username required</p>
+      <p *ngIf="myUsername.errors.minlength" class="validation">username is too short</p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && myPassword.errors}">
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="password" #myPassword="ngModel" required minlength="6" [disabled]="processing"
+    />
+    <div *ngIf="feedbackEnabled && myPassword.errors">
+      <p *ngIf="myPassword.errors.required" class="validation">password required</p>
+      <p *ngIf="myPassword.errors.minlength" class="validation">password is too short</p>
+    </div>
+  </div>
+
+  <div class="field submit">
+    <button type="submit" [disabled]="processing">Login</button>
+    <div *ngIf="feedbackEnabled && myForm.invalid">
+      <p class="validation">there are errors in the form, please review the fields</p>
+    </div>
+  </div>
+</form> -->

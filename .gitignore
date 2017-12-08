@@ -28,3 +28,4 @@ desktop.ini
 
 # dotenv
 .env
+src/app/pages/page-add-flat/page-add-flat.component.spec.ts
