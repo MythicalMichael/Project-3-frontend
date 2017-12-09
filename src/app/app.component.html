@@ -1,26 +1,30 @@
 <header class="site-header">
 
   <h1 class="site-title">
-    <a [routerLink]="['/flat']">Flat listing</a>
+    <a [routerLink]="['/flat']">Flat Listing</a>
   </h1>
 
   <div [ngClass]="{'is-user': user, 'is-anon': anon}">
-    <div *ngIf="!loading">
-      <span class="username text">Loading...</span>
-    </div>
-    <div *ngIf="!loading && !user">
+    <!-- <div *ngIf="loading">
+      <span class="username text">loading...</span>
+    </div> -->
+    <div *ngIf="!loading && !!user">
       <a (click)="profile()">{{user.username}}</a>
-      <a (click)="logout()">Logout</a>
+      <a (click)="logout()">logout</a>
     </div>
     <div *ngIf="!loading && anon">
-      <a (click)="login()">Login</a>
-      <a (click)="signup()">Signup</a>
+      <a (click)="login()">login</a>
+      <a (click)="signup()">signup</a>
     </div>
   </div>
+
 </header>
-xxx
+
 <router-outlet></router-outlet>
-xxx
+
 <footer class="site-footer">
+
   <p>copyright bcnweb0817</p>
+  <p>Cristians and Mishas nice Website</p>
+
 </footer>

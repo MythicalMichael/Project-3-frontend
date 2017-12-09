@@ -1,3 +1,12 @@
-<p>
-  page-profile works!
-</p>
+<div *ngIf="!user">
+  Loading...
+</div>
+
+
+<div *ngIf="user">
+  <p>{{user.username}}</p>
+  <p>{{user.email}}</p>
+  <p>profile picture coming soon</p>
+</div>
+
+<a [routerLink]="['/edit-profile']"> edit your profile here </a>

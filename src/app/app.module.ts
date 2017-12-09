@@ -37,11 +37,31 @@ import { UsersService } from "./services/users.service";
 
 const routes: Routes = [
   { path: "", redirectTo: "flat", pathMatch: "full" },
-  { path: "flat", component: PageFlatComponent },
-  { path: "flat/:id", component: PageFlatIdComponent },
-  { path: "add-flat", component: PageAddFlatComponent },
-  { path: "edit-profile", component: PageProfileEditComponent },
-  { path: "profile", component: PageProfileComponent },
+  {
+    path: "flat",
+    canActivate: [RequireAuthGuard],
+    component: PageFlatComponent
+  },
+  {
+    path: "flat/:id",
+    canActivate: [RequireAuthGuard],
+    component: PageFlatIdComponent
+  },
+  {
+    path: "add-flat",
+    canActivate: [RequireAuthGuard],
+    component: PageAddFlatComponent
+  },
+  {
+    path: "edit-profile",
+    canActivate: [RequireAuthGuard],
+    component: PageProfileEditComponent
+  },
+  {
+    path: "profile",
+    canActivate: [RequireAuthGuard],
+    component: PageProfileComponent
+  },
   {
     path: "auth/login",
     canActivate: [RequireAnonGuard],
@@ -52,7 +72,11 @@ const routes: Routes = [
     canActivate: [RequireAnonGuard],
     component: PageSignupComponent
   },
-  { path: "user/:id", component: PageUserIdComponent }
+  {
+    path: "user/:id",
+    canActivate: [RequireAuthGuard],
+    component: PageUserIdComponent
+  }
 ];
 
 @NgModule({

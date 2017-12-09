@@ -25,3 +25,5 @@ export class RequireAuthGuard implements CanActivate {
     });
   }
 }
+
+//// kann sein dass ich anon ud auth vertauscht habe

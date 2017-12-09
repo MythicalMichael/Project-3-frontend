@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
@@ -12,14 +12,18 @@ export class UsersService {
   //   return this.http.get(baseUrl + '/user').map((res: Response) => res.json());
   // }
   getOneUser(userid): Observable<any> {
+    const options = new RequestOptions();
+    options.withCredentials = true;
     return this.http
       .get(baseUrl + "/user/" + userid)
       .map((res: Response) => res.json());
   }
 
-  // getLoggedInUser(userme){
-  //   return this.http
-  //     .get(baseUrl + "/user/" + userme)
-  //     .map((res: Response) => res.json());
-  // }
+  getLoggedInUser(): Observable<any> {
+    const options = new RequestOptions();
+    options.withCredentials = true;
+    return this.http
+      .get(baseUrl + "/auth/me", options)
+      .map((res: Response) => res.json());
+  }
 }

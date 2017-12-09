@@ -24,7 +24,7 @@ export class LoginComponent {
     this.auth
       .login(this.user)
       .subscribe(
-        () => this.router.navigate(["/tasks"]),
+        () => this.router.navigate(["/flat"]),
         err => (this.error = err)
       );
   }

@@ -22,7 +22,6 @@ export class AuthService {
 
   constructor(private http: Http) {}
 
-  ////// wtf
   private setUser(user: User = null) {
     this.loaded = true;
     this.user = user;
@@ -73,6 +72,9 @@ export class AuthService {
       .catch(err => {
         if (err.status === 404) {
           this.setUser();
+          //////////////////
+
+          ///////////////////
         }
       });
   }
