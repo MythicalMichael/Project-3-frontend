@@ -6,7 +6,10 @@
 <div *ngIf="flat">
   {{flat.flatname}}
   <img src="http://localhost:3000{{flat.mainPicture}}" />
-  <p>{{flat.author.username}}</p>
+  <a [routerLink]="['/user',flat.author._id]">
+    <p>{{flat.author.username}}</p>
+  </a>
+
 
 
 </div>

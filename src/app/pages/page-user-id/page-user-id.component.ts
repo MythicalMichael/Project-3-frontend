@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { UsersService } from '../../services/users.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
+import { UsersService } from "../../services/users.service";
 
 @Component({
-  selector: 'app-page-user-id',
-  templateUrl: './page-user-id.component.html',
-  styleUrls: ['./page-user-id.component.css']
+  selector: "app-page-user-id",
+  templateUrl: "./page-user-id.component.html",
+  styleUrls: ["./page-user-id.component.css"]
 })
 export class PageUserIdComponent implements OnInit {
   user: object;
