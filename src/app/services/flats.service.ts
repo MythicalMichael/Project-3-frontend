@@ -32,4 +32,12 @@ export class FlatsService {
       .post(baseUrl + "/flat/add", formData, options)
       .map((res: Response) => res.json());
   }
+  postJoinRequestPleb(flatid, message): Observable<any> {
+    // console.log("hello from the other side");
+    const options = new RequestOptions();
+    options.withCredentials = true;
+    return this.http
+      .post(baseUrl + "/flat/" + flatid + "/flatmates", { message }, options)
+      .map((res: Response) => res.json());
+  }
 }

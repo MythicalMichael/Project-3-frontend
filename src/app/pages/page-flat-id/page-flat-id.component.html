@@ -6,10 +6,13 @@
 <div *ngIf="flat">
   {{flat.flatname}}
   <img src="http://localhost:3000{{flat.mainPicture}}" />
+  <textarea [(ngModel)]="message"></textarea>
+  <!-- button below is not working yet -->
+  <button (click)="handleClickRequestToJoin()" *ngIf="canRequest">
+    Request to join flat for given date
+  </button>
   <a [routerLink]="['/user',flat.author._id]">
     <p>{{flat.author.username}}</p>
   </a>
-
-
 
 </div>

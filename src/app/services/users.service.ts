@@ -26,4 +26,13 @@ export class UsersService {
       .get(baseUrl + "/auth/me", options)
       .map((res: Response) => res.json());
   }
+  //////////////////////////////////
+  // postJoinRequestPleb(jreqdata): Observable<any> {
+  //   // console.log("hello from the other side");
+  //   const options = new RequestOptions();
+  //   options.withCredentials = true;
+  //   return this.http // help
+  //     .post(baseUrl + "/flats/request", jreqdata, options)
+  //     .map((res: Response) => res.json());
+  // }
 }
