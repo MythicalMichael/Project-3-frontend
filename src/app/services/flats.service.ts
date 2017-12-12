@@ -40,4 +40,28 @@ export class FlatsService {
       .post(baseUrl + "/flat/" + flatid + "/flatmates", { message }, options)
       .map((res: Response) => res.json());
   }
+  putAcceptRequest(userid, flatid, reply): Observable<any> {
+    // console.log("hello from the other side");
+    const options = new RequestOptions();
+    options.withCredentials = true;
+    return this.http
+      .put(
+        baseUrl + "/flat/" + flatid + "/flatmates/" + userid + "/accept",
+        { reply },
+        options
+      )
+      .map((res: Response) => res.json());
+  }
+  putRejectRequest(userid, flatid, reply): Observable<any> {
+    // console.log("hello from the other side");
+    const options = new RequestOptions();
+    options.withCredentials = true;
+    return this.http
+      .put(
+        baseUrl + "/flat/" + flatid + "/flatmates/" + userid + "/reject",
+        { reply },
+        options
+      )
+      .map((res: Response) => res.json());
+  }
 }

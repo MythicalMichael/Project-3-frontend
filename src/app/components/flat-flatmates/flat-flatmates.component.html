@@ -1,0 +1,8 @@
+ {{theFlatmate.user | json}}
+<textarea [(ngModel)]="reply"></textarea>
+<button (click)="handleClickAddToFlatmates(theFlatmate.user)">
+  ACCEPT
+</button>
+<button (click)="handleClickRejectToFlatmates(theFlatmate.user)" [disabled]="clicked">
+  REJECT
+</button>

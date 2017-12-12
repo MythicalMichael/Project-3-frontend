@@ -34,6 +34,7 @@ import { PageProfileComponent } from "./pages/page-profile/page-profile.componen
 import { AuthService } from "./services/auth.service";
 import { FlatsService } from "./services/flats.service";
 import { UsersService } from "./services/users.service";
+import { FlatFlatmatesComponent } from './components/flat-flatmates/flat-flatmates.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "flat", pathMatch: "full" },
@@ -93,7 +94,8 @@ const routes: Routes = [
     PageUserIdComponent,
     LoginComponent,
     PageLoginComponent,
-    PageSignupComponent
+    PageSignupComponent,
+    FlatFlatmatesComponent
   ],
   imports: [
     BrowserModule,

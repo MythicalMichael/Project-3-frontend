@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background: lightblue url("https://media.giphy.com/media/A5pcWMMIEO95S/giphy.gif") no-repeat fixed center;
-    
+body {
+  font-family: Helvetica;
+  background-color: #5c0120;
+  color: white;
 }

@@ -15,4 +15,15 @@
     <p>{{flat.author.username}}</p>
   </a>
 
+
+
+  <h3>Flatmates</h3>
+  <ul>
+    <li *ngFor="let flatmate of flat.flatmates">
+      <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
+    </li>
+  </ul>
+
 </div>
+
+<!-- <app-flat-flatmate  ></app-flat-flatmate> -->

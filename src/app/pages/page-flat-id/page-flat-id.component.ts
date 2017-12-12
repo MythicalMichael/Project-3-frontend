@@ -13,6 +13,7 @@ export class PageFlatIdComponent implements OnInit {
   flat: { _id: null };
   message: string;
   canRequest: boolean;
+  user: { _id: null };
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,4 +43,4 @@ export class PageFlatIdComponent implements OnInit {
       .subscribe();
   }
 }
-//  this.usersService.postJoinRequestPleb(this.jreqdata).subscribe();
+// .putAcceptRequest(this.flat._id, this.user._id, this.reply)

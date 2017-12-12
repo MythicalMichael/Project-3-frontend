@@ -28,7 +28,6 @@ export class PageAddFlatComponent implements OnInit {
   ngOnInit() {}
 
   submitForm(theForm) {
-    console.log(theForm);
     this.feedbackEnabled = true;
     if (theForm.valid) {
       this.processing = true;
