@@ -12,14 +12,18 @@ import { UsersService } from "../../services/users.service";
 export class FlatFlatmatesComponent implements OnInit {
   @Input() theFlatmate;
   @Input() flat;
-  clicked = null;
-
+  clicked: boolean = null;
   reply: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private flatsService: FlatsService,
     private usersService: UsersService
   ) {}
+
+  private buttonsDisappear(): boolean {
+    // after clicking button
+    return true;
+  }
 
   ngOnInit() {}
 
@@ -28,12 +32,13 @@ export class FlatFlatmatesComponent implements OnInit {
     this.flatsService
       .putAcceptRequest(this.flat._id, user, this.reply)
       .subscribe();
-    this.clicked;
+    this.clicked = this.buttonsDisappear();
   }
   handleClickRejectToFlatmates(user) {
     console.log(this.flat);
     this.flatsService
       .putRejectRequest(user, this.flat._id, this.reply)
       .subscribe();
+    this.clicked = this.buttonsDisappear();
   }
 }

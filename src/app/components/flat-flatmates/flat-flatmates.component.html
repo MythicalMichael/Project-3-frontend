@@ -1,8 +1,13 @@
- {{theFlatmate.user | json}}
-<textarea [(ngModel)]="reply"></textarea>
-<button (click)="handleClickAddToFlatmates(theFlatmate.user)">
+<!-- pseudo code div-->
+<!-- <div *ngIf="req.user admin show buttons ese what ever"> -->
+
+
+<p [hidden]="clicked"> {{theFlatmate.user.username}} </p>
+<textarea [(ngModel)]="reply" [hidden]="clicked"></textarea>
+<button (click)="handleClickAddToFlatmates(theFlatmate.user)" [hidden]="clicked">
   ACCEPT
 </button>
-<button (click)="handleClickRejectToFlatmates(theFlatmate.user)" [disabled]="clicked">
+<button (click)="handleClickRejectToFlatmates(theFlatmate.user)" [hidden]="clicked">
   REJECT
 </button>
+<!-- </div> -->

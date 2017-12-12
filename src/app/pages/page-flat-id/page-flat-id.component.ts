@@ -14,6 +14,7 @@ export class PageFlatIdComponent implements OnInit {
   message: string;
   canRequest: boolean;
   user: { _id: null };
+  clicked: boolean = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,6 +24,10 @@ export class PageFlatIdComponent implements OnInit {
 
   private canUserRequestToJoin(): boolean {
     // IS NOT THE OWNER AND IS NOT IN FLATMATES YET
+    return true;
+  }
+  private buttonsDisappear(): boolean {
+    // after clicking button
     return true;
   }
 
@@ -41,6 +46,7 @@ export class PageFlatIdComponent implements OnInit {
     this.flatsService
       .postJoinRequestPleb(this.flat._id, this.message)
       .subscribe();
+    this.clicked = this.buttonsDisappear();
   }
 }
 // .putAcceptRequest(this.flat._id, this.user._id, this.reply)
