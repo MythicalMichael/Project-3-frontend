@@ -4,10 +4,11 @@
 
 <p [hidden]="clicked"> {{theFlatmate.user.username}} </p>
 <textarea [(ngModel)]="reply" [hidden]="clicked"></textarea>
-<button (click)="handleClickAddToFlatmates(theFlatmate.user)" [hidden]="clicked">
+<button (click)="handleClickAddToFlatmates(theFlatmate.user._id)" [hidden]="clicked">
   ACCEPT
 </button>
-<button (click)="handleClickRejectToFlatmates(theFlatmate.user)" [hidden]="clicked">
+<button (click)="handleClickRejectToFlatmates(theFlatmate.user._id)" [hidden]="clicked">
   REJECT
 </button>
+<p>{{theFlatmate.user| json}}</p>
 <!-- </div> -->

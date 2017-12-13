@@ -30,7 +30,7 @@ export class FlatFlatmatesComponent implements OnInit {
   handleClickAddToFlatmates(user) {
     console.log(this.flat);
     this.flatsService
-      .putAcceptRequest(this.flat._id, user, this.reply)
+      .putAcceptRequest(user, this.flat._id, this.reply)
       .subscribe();
     this.clicked = this.buttonsDisappear();
   }

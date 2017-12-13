@@ -16,8 +16,10 @@ export class PageAddFlatComponent implements OnInit {
   flat = {
     filename: "",
     rooms: null,
-    price: null
+    price: null,
+    flatname: null
   };
+
   // author = loggedin user;
   uploader: FileUploader = new FileUploader({
     url: `${this.baseUrl}/flat/upload`

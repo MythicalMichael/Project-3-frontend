@@ -6,7 +6,7 @@
 <div *ngIf="flat">
   {{flat.flatname}}
   <img src="http://localhost:3000{{flat.mainPicture}}" />
-  <textarea [(ngModel)]="message" [hidden]="clicked"></textarea>
+  <textarea [(ngModel)]="message" [hidden]="clicked" *ngIf="canRequest"></textarea>
   <!-- button below is not working yet -->
   <button (click)="handleClickRequestToJoin()" *ngIf="canRequest" [hidden]="clicked">
     Request to join flat for given date
@@ -23,5 +23,12 @@
       <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
     </li>
   </ul>
+  ///////////////////
 
+
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
 </div>

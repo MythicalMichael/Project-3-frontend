@@ -3,6 +3,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { FlatsService } from "../../services/flats.service";
 import { UsersService } from "../../services/users.service";
+import { AuthService } from "../../services/auth.service";
+//////////////
+import { AgmCoreModule } from "@agm/core";
 
 @Component({
   selector: "app-page-flat-id",
@@ -13,18 +16,31 @@ export class PageFlatIdComponent implements OnInit {
   flat: { _id: null };
   message: string;
   canRequest: boolean;
-  user: { _id: null };
   clicked: boolean = null;
+  user = null;
+  ///////////////
+  lat = 51.678418;
+  lng = 7.809007;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private flatsService: FlatsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private authService: AuthService
   ) {}
 
   private canUserRequestToJoin(): boolean {
     // IS NOT THE OWNER AND IS NOT IN FLATMATES YET
-    return true;
+    console.log("bytton", this.flat);
+    if (
+      this.user._id === this.flat["author"] &&
+      this.flat["acepptedFlatmates"].includes(this.user._id) &&
+      this.flat["declinedFlatmates"].includes(this.user._id)
+    ) {
+      return false;
+    } else {
+      return true;
+    }
   }
   private buttonsDisappear(): boolean {
     // after clicking button
@@ -32,9 +48,12 @@ export class PageFlatIdComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.authService.getUser();
+    console.log(this.user);
     this.activatedRoute.params.subscribe(params => {
       this.flatsService.getOneFlat(params.id).subscribe(data => {
         this.flat = data;
+        console.log("this.flat onng", this.flat);
         this.canRequest = this.canUserRequestToJoin();
       });
     });

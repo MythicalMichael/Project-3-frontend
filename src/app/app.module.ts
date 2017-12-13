@@ -34,7 +34,9 @@ import { PageProfileComponent } from "./pages/page-profile/page-profile.componen
 import { AuthService } from "./services/auth.service";
 import { FlatsService } from "./services/flats.service";
 import { UsersService } from "./services/users.service";
-import { FlatFlatmatesComponent } from './components/flat-flatmates/flat-flatmates.component';
+import { FlatFlatmatesComponent } from "./components/flat-flatmates/flat-flatmates.component";
+// google maps
+import { AgmCoreModule } from "@agm/core";
 
 const routes: Routes = [
   { path: "", redirectTo: "flat", pathMatch: "full" },
@@ -103,7 +105,10 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    FileUploadModule
+    FileUploadModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyC-oc97gdwS-DukzwxfoXzINxqn5Pm7A6I"
+    })
   ],
   providers: [
     FlatsService,
