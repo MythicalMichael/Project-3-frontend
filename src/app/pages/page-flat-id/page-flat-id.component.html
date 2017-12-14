@@ -6,29 +6,25 @@
 <div *ngIf="flat">
   {{flat.flatname}}
   <img src="http://localhost:3000{{flat.mainPicture}}" />
-  <textarea [(ngModel)]="message" [hidden]="clicked" *ngIf="canRequest"></textarea>
+
   <!-- button below is not working yet -->
   <button (click)="handleClickRequestToJoin()" *ngIf="canRequest" [hidden]="clicked">
-    Request to join flat for given date
+    Request
   </button>
-  <a [routerLink]="['/user',flat.author._id]">
-    <p>{{flat.author.username}}</p>
+  <textarea [(ngModel)]="message" [hidden]="clicked" *ngIf="canRequest" placeholder="Describe yourself here..."></textarea>
+  <a [routerLink]="['/profile',flat.author._id]">
+    <p>The flat owner is {{flat.author.username}}</p>
   </a>
-
-
-
   <h3>Flatmates</h3>
-  <ul>
-    <li *ngFor="let flatmate of flat.flatmates">
-      <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
-    </li>
-  </ul>
-  ///////////////////
+  <p *ngFor="let flatmate of flat.flatmates">
+    <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
+  </p>
+</div>
 
-
-  <!-- this creates a google map on the page with the given lat/lng from -->
-  <!-- the component as the initial center of the map: -->
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<h3>Location</h3>
+<div>
+  <agm-map *ngIf="flat" [latitude]="this.flat.flatLocation[0].lat" [longitude]="this.flat.flatLocation[0].lng" [scrollwheel]="false"
+    [zoom]="16">
+    <agm-marker [latitude]="this.flat.flatLocation[0].lat" [longitude]="this.flat.flatLocation[0].lng"></agm-marker>
   </agm-map>
 </div>

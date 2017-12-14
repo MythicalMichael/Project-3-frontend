@@ -1,0 +1,9 @@
+button {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+
+button:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}

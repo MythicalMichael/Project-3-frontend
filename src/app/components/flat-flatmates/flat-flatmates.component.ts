@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { FlatsService } from "../../services/flats.service";
 import { UsersService } from "../../services/users.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-flat-flatmates",
@@ -14,28 +15,38 @@ export class FlatFlatmatesComponent implements OnInit {
   @Input() flat;
   clicked: boolean = null;
   reply: string;
+  authorized = true;
+  user = null;
   constructor(
     private activatedRoute: ActivatedRoute,
     private flatsService: FlatsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private authService: AuthService
   ) {}
 
   private buttonsDisappear(): boolean {
     // after clicking button
     return true;
   }
-
-  ngOnInit() {}
+  private checkIfAuthorized() {
+    console.log("this user flatmates", this.user);
+    if (this.user._id === this.flat.author) {
+      this.authorized = false;
+      return this.authorized;
+    }
+  }
+  ngOnInit() {
+    this.user = this.authService.getUser();
+    this.checkIfAuthorized();
+  }
 
   handleClickAddToFlatmates(user) {
-    console.log(this.flat);
     this.flatsService
       .putAcceptRequest(user, this.flat._id, this.reply)
       .subscribe();
     this.clicked = this.buttonsDisappear();
   }
   handleClickRejectToFlatmates(user) {
-    console.log(this.flat);
     this.flatsService
       .putRejectRequest(user, this.flat._id, this.reply)
       .subscribe();

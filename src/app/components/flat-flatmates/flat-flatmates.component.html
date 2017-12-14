@@ -1,14 +1,15 @@
 <!-- pseudo code div-->
 <!-- <div *ngIf="req.user admin show buttons ese what ever"> -->
 
-
-<p [hidden]="clicked"> {{theFlatmate.user.username}} </p>
-<textarea [(ngModel)]="reply" [hidden]="clicked"></textarea>
-<button (click)="handleClickAddToFlatmates(theFlatmate.user._id)" [hidden]="clicked">
-  ACCEPT
-</button>
-<button (click)="handleClickRejectToFlatmates(theFlatmate.user._id)" [hidden]="clicked">
-  REJECT
-</button>
-<p>{{theFlatmate.user| json}}</p>
-<!-- </div> -->
+<div>
+  <p> {{theFlatmate.user.username}} </p>
+  <p> {{theFlatmate.message}} </p>
+  <p> {{theFlatmate.date}} </p>
+  <textarea [(ngModel)]="reply" [hidden]="clicked" placeholder="Your Response" [hidden]="!authorized"></textarea>
+  <button (click)="handleClickAddToFlatmates(theFlatmate.user._id)" [hidden]="clicked" [hidden]="!authorized">
+    ACCEPT
+  </button>
+  <button (click)="handleClickRejectToFlatmates(theFlatmate.user._id)" [hidden]="clicked" [hidden]="!authorized">
+    REJECT
+  </button>
+</div>

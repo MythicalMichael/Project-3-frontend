@@ -18,12 +18,10 @@ export class RequireAuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.authService.me().then(user => {
       if (!user) {
-        this.router.navigate(["/auth/login"]);
+        this.router.navigate(["/welcome"]);
       } else {
         return true;
       }
     });
   }
 }
-
-//// kann sein dass ich anon ud auth vertauscht habe

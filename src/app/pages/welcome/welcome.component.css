@@ -1,0 +1,60 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+button {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+
+button:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+.join {
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 20%;
+  height: 20%;
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  width: 90%;
+}
+
+footer {
+  text-align: center;
+  font-family: sans-serif;
+  color: white;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}

@@ -13,14 +13,14 @@ import { AgmCoreModule } from "@agm/core";
   styleUrls: ["./page-flat-id.component.css"]
 })
 export class PageFlatIdComponent implements OnInit {
-  flat: { _id: null };
+  flat: any;
   message: string;
   canRequest: boolean;
   clicked: boolean = null;
   user = null;
-  ///////////////
-  lat = 51.678418;
-  lng = 7.809007;
+  lat: number;
+  long: number;
+  zoom = 4;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,11 +31,9 @@ export class PageFlatIdComponent implements OnInit {
 
   private canUserRequestToJoin(): boolean {
     // IS NOT THE OWNER AND IS NOT IN FLATMATES YET
-    console.log("bytton", this.flat);
     if (
-      this.user._id === this.flat["author"] &&
-      this.flat["acepptedFlatmates"].includes(this.user._id) &&
-      this.flat["declinedFlatmates"].includes(this.user._id)
+      this.user._id === this.flat["author"] ||
+      this.flat["requested"].includes(this.user._id)
     ) {
       return false;
     } else {
@@ -47,19 +45,23 @@ export class PageFlatIdComponent implements OnInit {
     return true;
   }
 
+  // ask tomorrow something about the numbers
   ngOnInit() {
     this.user = this.authService.getUser();
-    console.log(this.user);
     this.activatedRoute.params.subscribe(params => {
       this.flatsService.getOneFlat(params.id).subscribe(data => {
         this.flat = data;
-        console.log("this.flat onng", this.flat);
+        console.log(this.flat);
+        console.log(this.flat.flatLocation[0].lat);
         this.canRequest = this.canUserRequestToJoin();
       });
     });
+    this.lat = 2;
+    // this.lat = this.flat["flatLocation"].lat;
+    this.long = 2;
+    // this.long = this.flat["flatLocation"].long;
+    console.log("this.flat onng", this.flat);
   }
-
-  // get the params id to know what id the flat has you want to join and push this id into the flatrequest:{type:[Objectid]}
 
   handleClickRequestToJoin() {
     this.flatsService
@@ -68,4 +70,3 @@ export class PageFlatIdComponent implements OnInit {
     this.clicked = this.buttonsDisappear();
   }
 }
-// .putAcceptRequest(this.flat._id, this.user._id, this.reply)

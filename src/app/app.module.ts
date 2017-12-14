@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpModule } from "@angular/http";
 import { RouterModule, Routes } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 // Animations ?
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // Fileupload
@@ -37,9 +37,11 @@ import { UsersService } from "./services/users.service";
 import { FlatFlatmatesComponent } from "./components/flat-flatmates/flat-flatmates.component";
 // google maps
 import { AgmCoreModule } from "@agm/core";
+import { MapAutocompleteFlatidComponent } from "./components/map-autocomplete-flatid/map-autocomplete-flatid.component";
+import { WelcomeComponent } from "./pages/welcome/welcome.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "flat", pathMatch: "full" },
+  { path: "", redirectTo: "welcome", pathMatch: "full" },
   {
     path: "flat",
     canActivate: [RequireAuthGuard],
@@ -79,6 +81,11 @@ const routes: Routes = [
     path: "user/:id",
     canActivate: [RequireAuthGuard],
     component: PageUserIdComponent
+  },
+  {
+    path: "welcome",
+    canActivate: [RequireAnonGuard],
+    component: WelcomeComponent
   }
 ];
 
@@ -97,17 +104,21 @@ const routes: Routes = [
     LoginComponent,
     PageLoginComponent,
     PageSignupComponent,
-    FlatFlatmatesComponent
+    FlatFlatmatesComponent,
+    MapAutocompleteFlatidComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FileUploadModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyC-oc97gdwS-DukzwxfoXzINxqn5Pm7A6I"
+      apiKey: "AIzaSyC-oc97gdwS-DukzwxfoXzINxqn5Pm7A6I",
+      libraries: ["places"]
     })
   ],
   providers: [

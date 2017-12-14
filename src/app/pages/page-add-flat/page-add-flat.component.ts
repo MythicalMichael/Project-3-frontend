@@ -3,7 +3,8 @@ import { FlatsService } from "../../services/flats.service";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { FileUploader } from "ng2-file-upload";
-
+import {} from "googlemaps";
+import { MapsAPILoader } from "@agm/core";
 @Component({
   selector: "app-page-add-flat",
   templateUrl: "./page-add-flat.component.html",
@@ -17,7 +18,9 @@ export class PageAddFlatComponent implements OnInit {
     filename: "",
     rooms: null,
     price: null,
-    flatname: null
+    flatname: null,
+    flatLocation: null,
+    url: null
   };
 
   // author = loggedin user;
@@ -28,6 +31,15 @@ export class PageAddFlatComponent implements OnInit {
   constructor(private flatsService: FlatsService, private router: Router) {}
 
   ngOnInit() {}
+
+  handleLocationSelect(informationArray) {
+    this.flat.flatLocation = informationArray;
+    // this.flat.flatLocation.location = {
+    //   type: "Point",
+    //   coordinates: [informationArray[0].lat(), informationArray[0].long()]
+    // };
+    // this.flat.flatLocation.url = informationArray[1];
+  }
 
   submitForm(theForm) {
     this.feedbackEnabled = true;
@@ -42,5 +54,17 @@ export class PageAddFlatComponent implements OnInit {
           .subscribe(result => this.router.navigate(["/flat", result.id]));
       };
     }
+    // console.log("form", theForm);
+    // console.log("submit", this.flat.flatLocation);
   }
 }
+//   flatLocation: {
+//       location: {
+//         type: "Point",
+//         coordinates: [
+//           req.body.information[0].lat(),
+//           req.body.information[0].long()
+//         ]
+//       },
+//       url: req.body.information[1]
+//     }

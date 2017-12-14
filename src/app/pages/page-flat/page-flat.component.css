@@ -1,1 +1,33 @@
+img {
+  width: 50%;
+  height: 50%;
+}
 
+button {
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+  color: white;
+  text-decoration: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

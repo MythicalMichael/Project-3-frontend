@@ -1,4 +1,4 @@
-<form [ngClass]="{'has-error': error}" novalidate>
+<!-- <form [ngClass]="{'has-error': error}" novalidate>
   <div class="form-group field" [ngClass]="{'has-error': error}">
     <label>Username</label>
     <input type="text" [(ngModel)]="user.username" name="username" required/>
@@ -15,4 +15,49 @@
     <button (click)="signup()">signup</button>
     <p *ngIf="error" class="error">{{error}}</p>
   </div>
-</form>
+</form> -->
+
+<div class="main">
+
+  <div class="img">
+    <img src="../../assets/images/penguin.png" alt="">
+  </div>
+  <div class="form">
+    <form class="signup" [ngClass]="{'has-error': error}" novalidate>
+      <div class="form-group field" [ngClass]="{'has-error': error}">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="user.name" name="name" required/>
+      </div>
+      <div class="form-group field" [ngClass]="{'has-error': error}">
+        <label>Username</label>
+        <input type="text" [(ngModel)]="user.username" name="username" required/>
+      </div>
+      <div class="form-group field" [ngClass]="{'has-error': error}">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="user.email" name="email" required/>
+      </div>
+      <div class="form-group field" [ngClass]="{'has-error': error}">
+        <label>Telephone Number</label>
+        <input type="number" [(ngModel)]="user.phone" name="phone" required/>
+      </div>
+      <div class="form-group field" [ngClass]="{'has-error': error}">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="user.password" name="password" required/>
+      </div>
+      <div class="button-center">
+        <div class="form-group actions">
+          <button (click)="signup()">Sign Up</button>
+          <p *ngIf="error" class="error">{{error}}</p>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+<footer class="site-footer">
+  <p>Copyright BCN WEB</p>
+  <p>Cristians and Misha's nice Website</p>
+</footer>

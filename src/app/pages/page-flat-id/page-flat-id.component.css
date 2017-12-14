@@ -2,3 +2,42 @@ agm-map {
   height: 300px;
   width: 100%;
 }
+
+img {
+  width: 15%;
+  height: 15%;
+}
+
+button {
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+  color: white;
+  text-decoration: none;
+}
+
+a {
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+  color: white;
+  text-decoration: none;
+}
+
+textarea {
+  background-color: white;
+  border-color: white;
+  color: black;
+}

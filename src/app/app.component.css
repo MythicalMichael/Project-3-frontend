@@ -1,5 +1,19 @@
-body {
-  font-family: Helvetica;
-  background-color: #5c0120;
-  color: white;
+button {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+
+button:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+a {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+
+a:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
 }

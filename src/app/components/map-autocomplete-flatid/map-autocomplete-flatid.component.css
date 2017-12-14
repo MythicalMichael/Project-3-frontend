@@ -1,0 +1,11 @@
+agm-map {
+  height: 300px;
+  width: 80%;
+  justify-content: center;
+  display: flex;
+}
+input {
+  background-color: white;
+  border-color: white;
+  color: black;
+}

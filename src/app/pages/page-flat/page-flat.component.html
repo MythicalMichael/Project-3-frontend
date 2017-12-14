@@ -1,9 +1,16 @@
 <ul style="list-style: none">
   <div *ngIf="flats">
-    <li *ngFor="let cristian of flats">
-      {{cristian.flatname}}
-      <a [routerLink]="['/flat',cristian._id]"> ID </a>
+    <li *ngFor="let flat of flats">
+      <div class="list">
+        {{flat.flatname}}
+        <img src="http://localhost:3000{{flat.mainPicture}}" />
+        <button [routerLink]="['/flat',flat._id]"> Watch the flat
+        </button>
+      </div>
+
     </li>
   </div>
 </ul>
-<a [routerLink]="['/add-flat']"> Add your flat to the listing </a>
+<!-- <button>
+  <a [routerLink]="['/add-flat']"> Add your flat to the listing </a>
+</button> -->
