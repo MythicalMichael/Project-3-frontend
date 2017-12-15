@@ -15,7 +15,7 @@ export class FlatFlatmatesComponent implements OnInit {
   @Input() flat;
   clicked: boolean = null;
   reply: string;
-  authorized = true;
+  authorized = null;
   user = null;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,14 +30,19 @@ export class FlatFlatmatesComponent implements OnInit {
   }
   private checkIfAuthorized() {
     console.log("this user flatmates", this.user);
-    if (this.user._id === this.flat.author) {
-      this.authorized = false;
-      return this.authorized;
+    console.log(this.user._id);
+    console.log(this.flat.author._id);
+    if (this.user._id === this.flat.author._id) {
+      // this.authorized = false;
+      // return this.authorized;
+      return false;
+    } else {
+      return true;
     }
   }
   ngOnInit() {
     this.user = this.authService.getUser();
-    this.checkIfAuthorized();
+    this.authorized = this.checkIfAuthorized();
   }
 
   handleClickAddToFlatmates(user) {

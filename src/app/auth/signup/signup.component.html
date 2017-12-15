@@ -24,10 +24,7 @@
   </div>
   <div class="form">
     <form class="signup" [ngClass]="{'has-error': error}" novalidate>
-      <div class="form-group field" [ngClass]="{'has-error': error}">
-        <label>Name</label>
-        <input type="text" [(ngModel)]="user.name" name="name" required/>
-      </div>
+
       <div class="form-group field" [ngClass]="{'has-error': error}">
         <label>Username</label>
         <input type="text" [(ngModel)]="user.username" name="username" required/>
@@ -36,10 +33,7 @@
         <label>Email</label>
         <input type="email" [(ngModel)]="user.email" name="email" required/>
       </div>
-      <div class="form-group field" [ngClass]="{'has-error': error}">
-        <label>Telephone Number</label>
-        <input type="number" [(ngModel)]="user.phone" name="phone" required/>
-      </div>
+
       <div class="form-group field" [ngClass]="{'has-error': error}">
         <label>Password</label>
         <input type="password" [(ngModel)]="user.password" name="password" required/>

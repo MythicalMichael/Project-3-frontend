@@ -15,7 +15,7 @@ import { AgmCoreModule } from "@agm/core";
 export class PageFlatIdComponent implements OnInit {
   flat: any;
   message: string;
-  canRequest: boolean;
+  canRequest: boolean = null;
   clicked: boolean = null;
   user = null;
   lat: number;
@@ -31,9 +31,10 @@ export class PageFlatIdComponent implements OnInit {
 
   private canUserRequestToJoin(): boolean {
     // IS NOT THE OWNER AND IS NOT IN FLATMATES YET
+    console.log(this.flat);
     if (
-      this.user._id === this.flat["author"] ||
-      this.flat["requested"].includes(this.user._id)
+      this.user._id === this.flat.author._id ||
+      this.flat.declinedFlatmates.includes(this.user._id)
     ) {
       return false;
     } else {
@@ -44,23 +45,15 @@ export class PageFlatIdComponent implements OnInit {
     // after clicking button
     return true;
   }
-
   // ask tomorrow something about the numbers
   ngOnInit() {
     this.user = this.authService.getUser();
     this.activatedRoute.params.subscribe(params => {
       this.flatsService.getOneFlat(params.id).subscribe(data => {
         this.flat = data;
-        console.log(this.flat);
-        console.log(this.flat.flatLocation[0].lat);
         this.canRequest = this.canUserRequestToJoin();
       });
     });
-    this.lat = 2;
-    // this.lat = this.flat["flatLocation"].lat;
-    this.long = 2;
-    // this.long = this.flat["flatLocation"].long;
-    console.log("this.flat onng", this.flat);
   }
 
   handleClickRequestToJoin() {
