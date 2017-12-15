@@ -26,7 +26,7 @@ export class SignupComponent {
       .signup(this.user)
       .subscribe(
         () => this.router.navigate(["/flat"]),
-        err => (this.error = err)
+        err => (this.error = err.json().error)
       );
   }
 }

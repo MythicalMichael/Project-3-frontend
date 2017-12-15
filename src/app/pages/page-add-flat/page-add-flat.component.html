@@ -11,8 +11,8 @@
         <input type="text" name="flatname" [(ngModel)]="flat.flatname" #myFlatname="ngModel" required minlength="4" [disabled]="processing"
         />
         <div *ngIf="feedbackEnabled && myFlatname.errors">
-          <p *ngIf="myFlatname.errors.required" class="validation">Flatname required</p>
-          <p *ngIf="myFlatname.errors.minlength" class="validation">Flatname is too short</p>
+          <p *ngIf="myFlatname.errors.required" class="validation">Flat name is required</p>
+          <p *ngIf="myFlatname.errors.minlength" class="validation">Flat name is too short</p>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
         <label>Rooms</label>
         <input type="number" name="rooms" [(ngModel)]="flat.rooms" #myRooms="ngModel" [disabled]="processing" min="0" max="99" required/>
         <div *ngIf="feedbackEnabled && myRooms.errors">
-          <p *ngIf="myRooms.errors.required" class="validation">Give me the amount of rooms motherfucker</p>
+          <p *ngIf="myRooms.errors.required" class="validation">Rooms is required</p>
         </div>
 
       </div>
@@ -29,7 +29,7 @@
         <input type="number" name="price" [(ngModel)]="flat.price" #myPrice="ngModel" [disabled]="processing" min="0" required/>
 
         <div *ngIf="feedbackEnabled && myPrice.errors">
-          <p *ngIf="myPrice.errors.required" class="validation">Money</p>
+          <p *ngIf="myPrice.errors.required" class="validation">Price is required</p>
         </div>
       </div>
 
@@ -41,15 +41,16 @@
     </div> -->
       </div>
 
+      <h3>
+        Location</h3>
+      <app-map-autocomplete-flatid class="map" (select)="handleLocationSelect($event)"></app-map-autocomplete-flatid>
+
       <div class="field-submit">
         <button type="submit" [disabled]="processing">Add your Flat</button>
         <div *ngIf="feedbackEnabled && myForm.invalid">
           <p class="validation">There are errors in the form, please review the fields</p>
         </div>
       </div>
-
-      <h3>Location</h3>
-      <app-map-autocomplete-flatid class="map" (select)="handleLocationSelect($event)"></app-map-autocomplete-flatid>
 
     </form>
   </div>

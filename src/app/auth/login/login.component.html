@@ -16,10 +16,13 @@
 
         <div class="form-group actions">
           <button (click)="login()">Login</button>
-          <p *ngIf="error" class="error">{{error}}</p>
+          <p *ngIf="error" class="validation">{{error}}</p>
         </div>
-
       </div>
+      <p>If you do not have have an account yet
+        <br/>
+        <a [routerLink]="['/auth/signup']">click here to signup</a>
+      </p>
     </form>
   </div>
 </div>

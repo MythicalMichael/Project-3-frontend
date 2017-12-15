@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: lightblue;
@@ -10,4 +20,16 @@ footer {
   width: 100%;
   bottom: 0;
   position: fixed;
+}
+
+.validation {
+  color: rgb(170, 2, 2);
+  font-weight: bold;
+}
+
+.main {
+  width: 100%;
+  padding: 20px 10px;
+  max-width: 800px;
+  margin: 0 auto;
 }

@@ -17,3 +17,8 @@ a:hover {
   background-color: lightseagreen;
   border-color: lightseagreen;
 }
+
+.site-header {
+  background: #2b5be2;
+  margin-bottom: 30px;
+}

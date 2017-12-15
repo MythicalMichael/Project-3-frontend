@@ -1,16 +1,18 @@
-<ul style="list-style: none">
-  <div *ngIf="flats">
-    <li *ngFor="let flat of flats">
-      <div class="list">
-        {{flat.flatname}}
-        <img src="http://localhost:3000{{flat.mainPicture}}" />
-        <button [routerLink]="['/flat',flat._id]"> Watch the flat
-        </button>
-      </div>
+<div class="main">
+  <ul style="list-style: none">
+    <div *ngIf="flats">
+      <li *ngFor="let flat of flats">
+        <div class="list">
+          {{flat.flatname}}
+          <img src="http://localhost:3000{{flat.mainPicture}}" />
+          <button [routerLink]="['/flat',flat._id]"> Watch the flat
+          </button>
+        </div>
 
-    </li>
-  </div>
-</ul>
-<!-- <button>
-  <a [routerLink]="['/add-flat']"> Add your flat to the listing </a>
-</button> -->
+      </li>
+    </div>
+  </ul>
+  <!-- <button>
+    <a [routerLink]="['/add-flat']"> Add your flat to the listing </a>
+  </button> -->
+</div>

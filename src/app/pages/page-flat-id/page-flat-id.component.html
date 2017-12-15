@@ -1,30 +1,32 @@
-<div *ngIf="!flat">
-  <img src="https://media.giphy.com/media/A5pcWMMIEO95S/giphy.gif">
-</div>
+<div class="main">
+  <div *ngIf="!flat">
+    <img src="https://media.giphy.com/media/A5pcWMMIEO95S/giphy.gif">
+  </div>
 
 
-<div *ngIf="flat">
-  {{flat.flatname}}
-  <img src="http://localhost:3000{{flat.mainPicture}}" />
+  <div *ngIf="flat">
+    {{flat.flatname}}
+    <img src="http://localhost:3000{{flat.mainPicture}}" />
 
-  <!-- button below is not working yet -->
-  <button (click)="handleClickRequestToJoin()" *ngIf="canRequest" [hidden]="clicked">
-    Request
-  </button>
-  <textarea [(ngModel)]="message" [hidden]="clicked" *ngIf="canRequest" placeholder="Describe yourself here..."></textarea>
-  <a [routerLink]="['/profile',flat.author._id]">
-    <p>The flat owner is {{flat.author.username}}</p>
-  </a>
-  <h3>Flatmates</h3>
-  <p *ngFor="let flatmate of flat.flatmates">
-    <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
-  </p>
-</div>
+    <!-- button below is not working yet -->
+    <button (click)="handleClickRequestToJoin()" *ngIf="canRequest" [hidden]="clicked">
+      Request
+    </button>
+    <textarea [(ngModel)]="message" [hidden]="clicked" *ngIf="canRequest" placeholder="Describe yourself here..."></textarea>
+    <a [routerLink]="['/profile',flat.author._id]">
+      <p>The flat owner is {{flat.author.username}}</p>
+    </a>
+    <h3>Flatmates</h3>
+    <p *ngFor="let flatmate of flat.flatmates">
+      <app-flat-flatmates [theFlatmate]="flatmate" [flat]="flat"></app-flat-flatmates>
+    </p>
+  </div>
 
-<h3>Location</h3>
-<div>
-  <!-- <agm-map *ngIf="flat" [latitude]="this.flat.flatLocation[0].lat" [longitude]="this.flat.flatLocation[0].lng" [scrollwheel]="false"
-    [zoom]="16">
-    <agm-marker [latitude]="this.flat.flatLocation[0].lat" [longitude]="flat.flatLocation[0].lng"></agm-marker>
-  </agm-map> -->
+  <h3>Location</h3>
+  <div>
+    <!-- <agm-map *ngIf="flat" [latitude]="this.flat.flatLocation[0].lat" [longitude]="this.flat.flatLocation[0].lng" [scrollwheel]="false"
+        [zoom]="16">
+        <agm-marker [latitude]="this.flat.flatLocation[0].lat" [longitude]="flat.flatLocation[0].lng"></agm-marker>
+      </agm-map> -->
+  </div>
 </div>
